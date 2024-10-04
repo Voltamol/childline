@@ -4,7 +4,7 @@ const WhyUs=(props)=>{
       <div class="container aos-init aos-animate" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Why Choose Us</h2>
+          <h2>importance of child online protection</h2>
 
         </div>
 

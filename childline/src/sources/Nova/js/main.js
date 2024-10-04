@@ -4,6 +4,11 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+import AOS from 'aos';
+import GLightbox from 'glightbox';
+import Swiper from 'swiper';
+import Isotope from 'isotope-layout';
+
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 

@@ -697,7 +697,7 @@ section {
 /*--------------------------------------------------------------
 # Featured Services
 --------------------------------------------------------------*/
-.featured-services .icon-box {
+ .icon-box {
   padding: 30px;
   position: relative;
   overflow: hidden;
@@ -730,7 +730,14 @@ section {
   margin-bottom: 15px;
 }
 
-.featured-services .icon i {
+/* .featured-services .icon i {
+  font-size: 48px;
+  line-height: 1;
+  color: #106eea;
+  transition: all 0.3s ease-in-out;
+} */
+
+.featured-services-icon {
   font-size: 48px;
   line-height: 1;
   color: #106eea;
@@ -754,7 +761,8 @@ section {
 }
 
 .featured-services .icon-box:hover .title a,
-.featured-services .icon-box:hover .description {
+.featured-services .icon-box:hover .description,
+.featured-services .icon-box:hover .featured-services-icon {
   color: #fff;
 }
 

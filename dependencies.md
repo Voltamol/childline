@@ -1,3 +1,12 @@
+```bash
+
+npm install glightbox isotope-layout
+npm install react-bootstrap bootstrap aos swiper
+npm install react-icons
+npm install react-router-dom
+npm install purecounter waypoint
+```
+
 |project| components                         |
 |-------|------------------------------------|
 |BizLand| icon-box                           |

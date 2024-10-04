@@ -1,0 +1,1 @@
+getting components from bootstrap templates may not render properly until classname or tagname of parent component or tag is included somehow in new component

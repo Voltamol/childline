@@ -4,7 +4,7 @@ const HeroSection=(props)=>{
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4">
-                    <h2 data-aos="fade-up" class="aos-init aos-animate">Focus On What Matters</h2>
+                    <h2 data-aos="fade-up" class="aos-init aos-animate">Child Online Protection</h2>
                     <blockquote data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate">
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis cum recusandae eum laboriosam voluptatem repudiandae odio, vel exercitationem officiis provident minima. </p>
                     </blockquote>
