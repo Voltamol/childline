@@ -1,8 +1,10 @@
+import '../sources/Nova/css/main.css';
+import blog1 from '../sources/Nova/img/blog/blog-1.jpg';
 const PostBox=(props)=>{
     return(
         <div class="col-xl-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
             <div class="post-box">
-                <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""/></div>
+                <div class="post-img"><img src={blog1} class="img-fluid" alt=""/></div>
                 <div class="meta">
                 <span class="post-date">Tue, December 12</span>
                 <span class="post-author"> / Julia Parker</span>
