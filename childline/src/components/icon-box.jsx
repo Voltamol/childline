@@ -15,7 +15,7 @@ const IconBox=(props)=>{
             <div className="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                 <div className="icon">{props.icon}</div>
                 <h4 className="title"><a href="">{props.title}</a></h4>
-                <ul style={{listStyleType:'circle',width:'415px'}}>
+                <ul style={{listStyleType:'circle',width:'800px'}}>
                     
                     <HelpLink to="#" text="Social Media"/>
                     <HelpLink to="#" text="Online Bullying"/>

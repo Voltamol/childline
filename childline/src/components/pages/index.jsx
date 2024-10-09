@@ -4,9 +4,14 @@ import PrimaryButton from '../buttons';
 import IconBox from "../icon-box";
 import HeroSection from "../hero-section";
 import PostBox from '../post-box';
+import Paragraph from '../paragraph';
+import { Filter,FilterContainer } from '../resource-filters';
+import Navigation from '../navigation';
+import Footer from '../footer';
 const Index=(props)=>{
     return(
         <>
+            <Navigation/>
             <HeroSection>
                 <h2 data-aos="fade-up" class="aos-init aos-animate">Child Online Protection</h2>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis cum recusandae eum laboriosam voluptatem repudiandae odio, vel exercitationem officiis provident minima. </p>
@@ -42,6 +47,11 @@ const Index=(props)=>{
                 <PostBox/>
                 <PostBox/>
             </div>
+            <Footer/>
+            
+            
+            
+            
         </>
     )
 }
