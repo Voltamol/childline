@@ -1,17 +1,18 @@
 import { BsTwitter,BsFacebook,BsYoutube,BsLinkedin } from "react-icons/bs";
 import logo from '../childline-logo.png'
+import { Link } from "react-router-dom";
 const Footer=(props)=>{
     return(
-        <footer id="footer" className="footer mt-2">
+        <footer id="footer" className="footer mt-2 z-3">
 
     <div className="footer-content">
       <div className="container">
         <div className="row gy-4">
           <div className="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" className="logo d-flex align-items-center">
+            <Link to="/" className="logo d-flex align-items-center">
               <img src={logo} style={{filter:'hue-rotate(120deg)'}}/>
               <span>Childline</span>
-            </a>
+            </Link>
             <br/>
             <br/>
             <div className="social-links d-flex  mt-3">

@@ -86,7 +86,7 @@ const Navigation=(props)=>{
               <ul>
                 <li><Link to="/" className="active">Home</Link></li>
                 <li><Link to="/resources">Resources</Link></li>
-                <li><Link to="/blog">Blog</Link></li>
+                <li><Link to="/login">Contribute to  our Blog</Link></li>
                 <DropDownLink link={sampleDropdown} title="Teachers & Professionals" />
                 <DropDownLink link={sampleDropdown} title="Parents & Carers" />
                 <DropDownLink link={sampleDropdown} title="Young People" />

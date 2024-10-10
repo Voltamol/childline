@@ -47,6 +47,9 @@ const Index=(props)=>{
                 <PostBox/>
                 <PostBox/>
             </div>
+            <div className='d-flex p-3'>
+                <PrimaryButton text="view all posts"/>
+            </div>
             <div>
                 <h2 data-aos="fade-up" className="aos-init aos-animate d-flex p-2">
                     <BsBoxes className='me-1'/>
@@ -61,7 +64,7 @@ const Index=(props)=>{
                 <ResourceCard/>
             </div>
             <div className='d-flex p-3'>
-                <PrimaryButton text="view all posts"/>
+                <PrimaryButton text="view all resources"/>
             </div>
             <Footer/>
             

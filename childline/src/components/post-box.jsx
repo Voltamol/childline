@@ -1,17 +1,18 @@
 import '../sources/Nova/css/main.css';
 import blog1 from '../sources/Nova/img/blog/blog-1.jpg';
+import { Link } from 'react-router-dom';
 const PostBox=(props)=>{
     return(
-        <div class="col-xl-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-            <div class="post-box">
-                <div class="post-img"><img src={blog1} class="img-fluid" alt=""/></div>
-                <div class="meta">
-                <span class="post-date">Tue, December 12</span>
-                <span class="post-author"> / Julia Parker</span>
+        <div className="col-xl-3 col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div className="post-box">
+                <div className="post-img"><img src={blog1} className="img-fluid" alt=""/></div>
+                <div className="meta">
+                <span className="post-date">Tue, December 12</span>
+                <span className="post-author"> / Julia Parker</span>
                 </div>
-                <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
+                <h3 className="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
                 <p>Illum voluptas ab enim placeat. Adipisci enim velit nulla. Vel omnis laudantium. Asperiores eum ipsa est officiis. Modi qui magni est...</p>
-                <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                <Link to="/blog-details" className="readmore stretched-link"><span>Read More</span><i className="bi bi-arrow-right"></i></Link>
             </div>
         </div>
     )
