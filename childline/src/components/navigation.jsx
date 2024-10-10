@@ -4,7 +4,7 @@ const Navigation=(props)=>{
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <h1 class="d-flex align-items-center">Nova</h1>
+        <h1 class="d-flex align-items-center">Childline</h1>
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
