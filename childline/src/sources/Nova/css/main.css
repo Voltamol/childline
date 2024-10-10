@@ -505,7 +505,7 @@ section {
 .hero {
   width: 100%;
   min-height: 100vh;
-  background: url("../img/hero-bg.jpg") top center;
+  /* background: url("../img/hero-bg.jpg") top center; */
   background-size: cover;
   position: relative;
   padding: 120px 0;
@@ -564,7 +564,7 @@ section {
   margin: 40px 0;
 }
 
-.hero .btn-get-started {
+/* .hero .btn-get-started {
   font-family: var(--font-secondary);
   font-weight: 500;
   font-size: 15px;
@@ -578,6 +578,23 @@ section {
 }
 
 .hero .btn-get-started:hover {
+  background: rgba(86, 184, 230, 0.8);
+} */
+
+.btn-get-started {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.btn-get-started:hover {
   background: rgba(86, 184, 230, 0.8);
 }
 

@@ -1,18 +1,18 @@
 //import IconBox from "../icon-box";
-import {BsPlayCircle,BsPeople,BsController,BsPhone,BsTv,BsChatDots,BsChatLeftText} from 'react-icons/bs'
+import {BsPlayCircle,BsPeople,BsController,BsPhone,BsTv,BsChatDots,BsChatLeftText,BsBoxes} from 'react-icons/bs'
 import PrimaryButton from '../buttons';
 import IconBox from "../icon-box";
 import HeroSection from "../hero-section";
 import PostBox from '../post-box';
-import Paragraph from '../paragraph';
-import { Filter,FilterContainer } from '../resource-filters';
+import ResourceCard from '../resource-card';
 import Navigation from '../navigation';
 import Footer from '../footer';
+import hero_img from '../../sources/Nova/img/heroes/hero-bg.jpg'
 const Index=(props)=>{
     return(
         <>
             <Navigation/>
-            <HeroSection>
+            <HeroSection img={hero_img}>
                 <h2 data-aos="fade-up" className="aos-init aos-animate">Child Online Protection</h2>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis cum recusandae eum laboriosam voluptatem repudiandae odio, vel exercitationem officiis provident minima. </p>
 
@@ -46,6 +46,22 @@ const Index=(props)=>{
                 <PostBox/>
                 <PostBox/>
                 <PostBox/>
+            </div>
+            <div>
+                <h2 data-aos="fade-up" className="aos-init aos-animate d-flex p-2">
+                    <BsBoxes className='me-1'/>
+                    Resources
+                </h2>
+                
+            </div>
+            <div className="row px-2 bg-light">
+                <ResourceCard/>
+                <ResourceCard/>
+                <ResourceCard/>
+                <ResourceCard/>
+            </div>
+            <div className='d-flex p-3'>
+                <PrimaryButton text="view all posts"/>
             </div>
             <Footer/>
             

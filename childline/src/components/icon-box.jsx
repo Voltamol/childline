@@ -5,7 +5,7 @@ const HelpLink=(props)=>{
     return(
         <li className='d-flex '>
             <BsCaretRight className='mt-1 me-2 description'/>
-            <Link className='description' href={props.to}>{props.text}</Link>
+            <Link className='description' to={props.to}>{props.text}</Link>
         </li>
     )
 }
@@ -17,11 +17,11 @@ const IconBox=(props)=>{
                 <h4 className="title"><a href="">{props.title}</a></h4>
                 <ul style={{listStyleType:'circle',width:'800px'}}>
                     
-                    <HelpLink to="#" text="Social Media"/>
-                    <HelpLink to="#" text="Online Bullying"/>
-                    <HelpLink to="#" text="Reliability Online"/>
-                    <HelpLink to="#" text="Parental Controls"/>
-                    <HelpLink to="#" text="Sexting"/>
+                    <HelpLink to="/help" text="Social Media"/>
+                    <HelpLink to="/help" text="Online Bullying"/>
+                    <HelpLink to="/help" text="Reliability Online"/>
+                    <HelpLink to="/help" text="Parental Controls"/>
+                    <HelpLink to="/help" text="Sexting"/>
                     
                 </ul>
             </div>

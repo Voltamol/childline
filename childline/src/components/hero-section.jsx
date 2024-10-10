@@ -1,7 +1,7 @@
 import '../sources/Nova/css/main.css';
 const HeroSection=(props)=>{
     return (
-        <section id="hero" class="hero d-flex align-items-center">
+        <section id="hero" class="hero d-flex align-items-center" style={{backgroundImage:`url(${props.img})`}}>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4">
