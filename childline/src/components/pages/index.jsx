@@ -13,16 +13,16 @@ const Index=(props)=>{
         <>
             <Navigation/>
             <HeroSection>
-                <h2 data-aos="fade-up" class="aos-init aos-animate">Child Online Protection</h2>
+                <h2 data-aos="fade-up" className="aos-init aos-animate">Child Online Protection</h2>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis cum recusandae eum laboriosam voluptatem repudiandae odio, vel exercitationem officiis provident minima. </p>
 
-                <div class="d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                <div className="d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                     <PrimaryButton text="Get Started"/>
-                    <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><BsPlayCircle className='me-1'/><span>Watch Video</span></a>
+                    <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" className="glightbox btn-watch-video d-flex align-items-center"><BsPlayCircle className='me-1'/><span>Watch Video</span></a>
                 </div>
             </HeroSection>
             <div>
-                <h2 data-aos="fade-up" class="aos-init aos-animate d-flex p-2">
+                <h2 data-aos="fade-up" className="aos-init aos-animate d-flex p-2">
                     <BsPeople className='me-1'/>
                     Help and Advice
                 </h2>
@@ -35,7 +35,7 @@ const Index=(props)=>{
                 <IconBox icon={<BsChatDots className='featured-services-icon' />} title="11-18 year olds" />
             </div>
             <div>
-                <h2 data-aos="fade-up" class="aos-init aos-animate d-flex p-2">
+                <h2 data-aos="fade-up" className="aos-init aos-animate d-flex p-2">
                     <BsChatLeftText className='me-1'/>
                     Blog
                 </h2>
