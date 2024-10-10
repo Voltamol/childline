@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import Index from './components/pages/index';
 import Help from './components/pages/help';
+import ResourcesPage from './components/pages/resources';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Index/>}/>
                 <Route path="/help" element={<Help/>}/>
+                <Route path="/resources" element={<ResourcesPage/>}/>
             </Routes>
         </Router>
     </div>

@@ -13,8 +13,8 @@ import {BsCaretRight} from 'react-icons/bs';
 const Point=(props)=>{
     return(
         <li className='d-flex align-items-center my-1'>
-            <BsCaretRight className='mt-1 me-2 text-secondary' style={{fontSize:'32px'}}/>
-            <span className='description'>{props.text}</span>
+            <BsCaretRight className='mb-2  me-2 text-secondary' style={{fontSize:'32px'}}/>
+            <p className='description lead'>{props.text}</p>
         </li>
     )
 }
