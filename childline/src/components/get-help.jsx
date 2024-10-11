@@ -1,7 +1,7 @@
 const GetHelp=(props)=>{
     return(
         <div className="container p-2" style={{width:'300px'}}>
-            <div className="rounded-2 text-white py-2 mb-2" style={{backgroundColor:'#1b2f45'}}>
+            <div className="rounded-2 text-white py-2 mb-2 ps-2" style={{backgroundColor:'#1b2f45'}}>
                 Get Help
             </div>
             

@@ -1,5 +1,6 @@
 import Navigation from "../navigation";
 import { Filter,FilterContainer } from "../resource-filters";
+import { BsArrowUp } from 'react-icons/bs';
 import HCard from "../h-card";
 const ResourcesLayout=(props)=>{
     return(
@@ -57,6 +58,8 @@ const ResourcesPage=(props)=>{
             
                         
             </ResourcesLayout>
+            <a href="#" class="scroll-top d-flex align-items-center justify-content-center active text-white"><BsArrowUp/></a>
+
         </>
     )
 }
