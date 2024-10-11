@@ -89,55 +89,41 @@ const starting_paragraphs=[
 ]
   
 
-const HelpMain=(props)=>{
-    return(
+const HelpMain = (props) => {
+    return (
         <HelpLayout>
-                <div className='pe-3 text-start ps-2'>
-                    {
-                            props.starting_paragraphs.map((para,index) =>(
-                                <p className='text-start pe-5 lead' key={index}>
-                                    {para}
-                                </p>
-                            ))
-                    }
-                    {
-                        
-                        <
-                            PointFormAnswers
-                            title="Where can I find them"
-                            description="There are four main places you can find parental controls, and it can help to set up a combination of these:"
-                            points={props.bold_points}
-                        />
-                    }
-                    
-                    {
-                        (props.carousel_points!='')?<div className='mb-3'>
-                            <p className='h2'>
-                                {props.question_text}?
-                            </p>
-                        <
-                            FurtherInfo
-                            items={further_info}
-                        />
-                        
-                    </div>:<></>
-                    }
-                    
-                    {
-                        <ul className="my-1 p-3">
-                        {
-                            props.bulleted_points.map((txt,i)=>(
-                                <Point text={txt} key={i}/>
-                            ))
-                        }
+            <div className='pe-3 text-start ps-2'>
+                {props.starting_paragraphs.map((para, index) => (
+                    <p className='text-start pe-5 lead' key={index}>
+                        {para}
+                    </p>
+                ))}
                 
-                    </ul>
-                    }
-                </div>
-                <GetHelp/>
-            </HelpLayout>
-    )
-}
+                <PointFormAnswers
+                    title="Where can I find them"
+                    description="There are four main places you can find parental controls, and it can help to set up a combination of these:"
+                    points={props.bold_points}
+                />
+                
+                {props.carousel_points && props.carousel_points.length > 0 && (
+                    <div className='mb-3'>
+                        <p className='h2'>
+                            {props.question_text}?
+                        </p>
+                        <FurtherInfo items={props.further_info} />
+                    </div>
+                )}
+
+                <ul className="my-1 p-3">
+                    {props.bulleted_points.map((txt, i) => (
+                        <Point text={txt} key={i} />
+                    ))}
+                </ul>
+            </div>
+            <GetHelp />
+        </HelpLayout>
+    );
+};
 
 const Help=(props)=>{
     return(

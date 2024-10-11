@@ -32,8 +32,11 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: var(--font-default);
-  color: var(--color-default);
+  
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--color-default);
 }
 
 a {

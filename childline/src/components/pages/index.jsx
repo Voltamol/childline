@@ -1,5 +1,5 @@
 //import IconBox from "../icon-box";
-import {BsPlayCircle,BsPeople,BsController,BsPhone,BsTv,BsChatDots,BsChatLeftText,BsBoxes} from 'react-icons/bs'
+import {BsPlayCircle,BsPeople,BsController,BsPhone,BsTv,BsChatDots,BsChatLeftText,BsBoxes,BsArrowUp} from 'react-icons/bs'
 import PrimaryButton from '../buttons';
 import IconBox from "../icon-box";
 import HeroSection from "../hero-section";
@@ -67,7 +67,7 @@ const Index=(props)=>{
                 <PrimaryButton text="view all resources"/>
             </div>
             <Footer/>
-            
+            <a href="#" class="scroll-top d-flex align-items-center justify-content-center active text-white"><BsArrowUp/></a>
             
             
             
