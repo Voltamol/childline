@@ -18,7 +18,5 @@ const GetHelp=(props)=>{
 }
 
 
-{/* <div className='my-2'>
-                <GetHelp/>
-            </div> */}
+
 export default GetHelp;

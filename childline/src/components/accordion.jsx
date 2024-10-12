@@ -6,7 +6,7 @@ function FurtherInfo(props) {
       {
         props.items.map((item,index)=>{
             return (<Accordion.Item key={index} eventKey={`${index}`}>
-                <Accordion.Header>{item.header}</Accordion.Header>
+                <Accordion.Header>{item.title}</Accordion.Header>
                 <Accordion.Body>
                     <Stack gap={2}>
                         {/* <h3>Incident summary</h3> */}

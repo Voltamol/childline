@@ -1,11 +1,13 @@
+import React, { useEffect, useState } from 'react';
 import GetHelp from '../get-help';
 import HeroSection from '../hero-section';
 import { BsArrowUp } from 'react-icons/bs';
-import PrimaryButton from '../buttons';
 import Navigation from '../navigation';
 import hero_img from '../../sources/Nova/img/heroes/hero-bg2.jpg';
 import FurtherInfo from '../accordion';
 import Point from '../points';
+import { fetchData, endpoints } from '../../api/endpoints';
+import Cookies from 'js-cookie';
 
 const HelpLayout = (props) => {
     return (
@@ -20,11 +22,9 @@ const HelpLayout = (props) => {
     );
 };
 
-const PointFormAnswers = (props) => {
+const BoldPoints = (props) => {
     return (
         <>
-            <p className='h2'>{props.title}</p>
-            <p className='lead'>{props.description}</p>
             {props.points.map((point, i) => (
                 <p key={i}>
                     <strong>{point[0]}</strong>: {point[1]}
@@ -34,78 +34,28 @@ const PointFormAnswers = (props) => {
     );
 };
 
-let further_info = [
-    {
-        "header": "What are Parental Controls?",
-        "body": "Parental controls are features that allow parents to manage and monitor their children's internet usage. They can restrict access to certain websites, set time limits, and monitor online activity."
-    },
-    {
-        "header": "How to Set Up Parental Controls?",
-        "body": "Most devices have built-in parental control settings. You can usually find these in the settings menu under 'Family' or 'User Accounts.' Follow the prompts to set up restrictions based on your preferences."
-    },
-    {
-        "header": "Benefits of Parental Controls",
-        "body": "- Protects children from inappropriate content.\n- Helps manage screen time effectively.\n- Encourages healthy online habits."
-    },
-    {
-        "header": "Common Misconceptions",
-        "body": "Some parents believe that parental controls are a substitute for open communication with their children. While they are useful, discussing internet safety and online behavior is equally important."
-    },
-    {
-        "header": "Recommended Tools",
-        "body": "- Net Nanny\n- Kaspersky Safe Kids\n- Qustodio\n- Circle Home Plus"
-    }
-];
-
-let bold_points = [
-    ['Internet provider', 'You can set up filters to help block access to inappropriate content on any device that connects to your home WiFi'],
-    ['Mobile operator', 'Filters are often automatically set up on mobile contracts, especially if the user is under the age of 18, but you can double-check with your provider'],
-    ['Devices', 'Many devices have parental control settings, for example, to help restrict spending in apps, reduce screentime, or disable location functions'],
-    ['Online Services', 'Sites like BBC iPlayer and YouTube have parental control settings to help restrict access to inappropriate content']
-];
-
-let sample_bulleted = [
-    "What are the best practices for setting up parental controls?",
-    "How can I monitor my child's online activity?",
-    "What types of content should I block?",
-    "How can I educate my child about internet safety?",
-    "What tools are available for parental control?",
-    "How do I handle my child's privacy concerns?",
-    "What are the signs that my child may be in danger online?",
-    "How can I set healthy screen time limits?",
-    "What should I do if I find inappropriate content?",
-    "How can I encourage open communication about online experiences?"
-];
-
-let starting_paragraphs = [
-    "Parental controls are designed to help protect children from inappropriate content online, such as pornography or other adult content.",
-    "These controls can be used in a number of ways, e.g. to help ensure that your children access only age-appropriate content, to set usage times and to monitor activity."
-];
-
 const HelpMain = (props) => {
     return (
         <HelpLayout>
             <div className='pe-3 text-start ps-2'>
-                {props.starting_paragraphs.map((para, index) => (
-                    <p className='text-start pe-5 lead' key={index}>{para}</p>
+                {props.paragraphs.map((para, index) => (
+                    <div key={index}>
+                        <h2>{para.title || 'Paragraph'}</h2> {/* Adjust based on your data */}
+                        <p className='text-start pe-5 lead'>{para.body}</p>
+                    </div>
                 ))}
 
-                <PointFormAnswers
-                    title={props.point_form_title}
-                    description={props.point_form_description}
-                    points={props.bold_points}
-                />
+                <BoldPoints points={props.bold_points} />
 
-                {props.carousel_points && props.carousel_points.length > 0 && (
+                {props.further_info.length > 0 && (
                     <div className='mb-3'>
-                        <p className='h2'>{props.question_text}?</p>
                         <FurtherInfo items={props.further_info} />
                     </div>
                 )}
 
                 <ul className="my-1 p-3">
-                    {props.bulleted_points.map((txt, i) => (
-                        <Point text={txt} key={i} />
+                    {props.bulleted_points.map((point, i) => (
+                        <Point text={point.body} key={i} />
                     ))}
                 </ul>
             </div>
@@ -115,10 +65,35 @@ const HelpMain = (props) => {
 };
 
 const Help = (props) => {
-    bold_points=[];
-    sample_bulleted=[];
-    starting_paragraphs=[]
-    further_info={}
+    const [bold_points, setBoldPoints] = useState([]);
+    const [bulleted_points, setBulletedPoints] = useState([]);
+    const [paragraphs, setParagraphs] = useState([]);
+    const [further_info, setFurtherInfo] = useState([]);
+    const [categoryitems, setCategoryItems] = useState([]);
+
+    const lineCategoryName = Cookies.get('lineCategoryName'); 
+    console.log(`getting data for: ${lineCategoryName}`);
+
+    useEffect(() => {
+        const getCategoryItems = async () => {
+            if (lineCategoryName) {
+                const endpoint = `${endpoints.categoryitems}?line_category_name=${encodeURIComponent(lineCategoryName)}`;
+                const data = await fetchData(endpoint);
+                if (data) { // Ensure data is not null or undefined
+                    setCategoryItems(data);
+                    const firstItem = data[0]; // Get the first item to display
+                    console.log(`firstItem: ${firstItem}`)
+                    setBoldPoints(firstItem.bold_points || []);
+                    setBulletedPoints(firstItem.bullets || []);
+                    setParagraphs(firstItem.paragraphs || []);
+                    setFurtherInfo(firstItem.further_info || []);
+                    
+                }
+            }
+        };
+
+        getCategoryItems();
+    }, [lineCategoryName]); // Add lineCategoryName as a dependency
     return (
         <>
             <Navigation />
@@ -126,22 +101,15 @@ const Help = (props) => {
                 <h6 className='text-light'>Help and advice</h6>
                 <h2 data-aos="fade-up" className="aos-init aos-animate">Parental Controls</h2>
                 <p className='text-light'>In depth information and key advice on parental controls for parents and carers</p>
-                
             </HeroSection>
 
             <HelpMain
                 bold_points={bold_points}
-                bulleted_points={sample_bulleted}
-                starting_paragraphs={starting_paragraphs}
+                bulleted_points={bulleted_points}
+                paragraphs={paragraphs}
                 further_info={further_info}
-                // point_form_title="Where can I find them"
-                // point_form_description="There are four main places you can find parental controls, and it can help to set up a combination of these:"
-                point_form_title=""
-                point_form_description=""
-                question_text="Where do I begin"
             />
-            <a href="#" class="scroll-top d-flex align-items-center justify-content-center active text-white"><BsArrowUp/></a>
-
+            <a href="#" className="scroll-top d-flex align-items-center justify-content-center active text-white"><BsArrowUp /></a>
         </>
     );
 }
