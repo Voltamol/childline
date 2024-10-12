@@ -7,7 +7,8 @@ import Help from './components/pages/help';
 import ResourcesPage from './components/pages/resources';
 import ForumDetailsPage from './components/pages/forum-details';
 import ForumEditsPage from './components/pages/forum-edits';
-import { Login } from './components/pages/login';
+import Posts from './components/pages/posts';
+import { Login,Signup } from './components/pages/login';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
                 <Route path="/blog-details" element={<ForumDetailsPage/>}/>
                 <Route path="/blog-edits" element={<ForumEditsPage/>}/>
                 <Route path='/login' element={<Login/>}/>
+                <Route path='/signup' element={<signup/>}/>
+                <Route path='/posts' element={<Posts/>}/>
             </Routes>
         </Router>
     </div>

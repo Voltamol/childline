@@ -1,7 +1,14 @@
-const PrimaryButton=(props)=>{
+import { Link } from "react-router-dom"
+const PrimaryLinkButton=(props)=>{
     return(
-        <a href="#about" class="btn-get-started">{props.text}</a>
+        <Link to={props.href} class="btn-get-started">{props.text}</Link>
     )
 }
 
-export default PrimaryButton;
+const PrimaryButton=(props)=>{
+    return(
+        <a href={`#${props.href}`} class="btn-get-started">{props.text}</a>
+    )
+}
+
+export {PrimaryButton, PrimaryLinkButton};

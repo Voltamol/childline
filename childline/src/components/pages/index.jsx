@@ -1,6 +1,6 @@
 //import IconBox from "../icon-box";
 import {BsPlayCircle,BsPeople,BsController,BsPhone,BsTv,BsChatDots,BsChatLeftText,BsBoxes,BsArrowUp} from 'react-icons/bs'
-import PrimaryButton from '../buttons';
+import {PrimaryButton,PrimaryLinkButton} from '../buttons';
 import IconBox from "../icon-box";
 import HeroSection from "../hero-section";
 import PostBox from '../post-box';
@@ -17,7 +17,7 @@ const Index=(props)=>{
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis cum recusandae eum laboriosam voluptatem repudiandae odio, vel exercitationem officiis provident minima. </p>
 
                 <div className="d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                    <PrimaryButton text="Get Started"/>
+                    <PrimaryButton text="Get Started" href="categories" />
                     <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" className="glightbox btn-watch-video d-flex align-items-center"><BsPlayCircle className='me-1'/><span>Watch Video</span></a>
                 </div>
             </HeroSection>
@@ -28,7 +28,7 @@ const Index=(props)=>{
                 </h2>
                 
             </div>
-            <div className="featured-services row p-2">
+            <div className="featured-services row p-2" id="categories">
                 <IconBox icon={<BsController className='featured-services-icon' />} title="Teachers and Professionals" />
                 <IconBox icon={<BsPhone className='featured-services-icon' />} title="Parents and Carers" />
                 <IconBox icon={<BsTv className='featured-services-icon' />} title="4-11 year olds" />
@@ -48,7 +48,7 @@ const Index=(props)=>{
                 <PostBox/>
             </div>
             <div className='d-flex p-3'>
-                <PrimaryButton text="view all posts"/>
+                <PrimaryLinkButton text="view all posts" href="/posts" />
             </div>
             <div>
                 <h2 data-aos="fade-up" className="aos-init aos-animate d-flex p-2">
@@ -64,7 +64,7 @@ const Index=(props)=>{
                 <ResourceCard/>
             </div>
             <div className='d-flex p-3'>
-                <PrimaryButton text="view all resources"/>
+                <PrimaryLinkButton text="view all resources" href="/resources" />
             </div>
             <Footer/>
             <a href="#" class="scroll-top d-flex align-items-center justify-content-center active text-white"><BsArrowUp/></a>
