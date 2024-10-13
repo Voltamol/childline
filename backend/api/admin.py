@@ -9,7 +9,8 @@ from .models import (
     SocialLink,
     ParagraphSection,
     FurtherInfo,
-    BoldPoint
+    BoldPoint,
+    Tag
 )
 
 class LineCategoryAdmin(admin.ModelAdmin):
@@ -55,6 +56,7 @@ admin.site.register(Resource, ResourceAdmin)
 admin.site.register(Subscriber, SubscriberAdmin)
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(SocialLink, SocialLinkAdmin)
+admin.site.register(Tag)
 
 admin.site.register(ParagraphSection, DescriptiveAdmin)
 admin.site.register(FurtherInfo, DescriptiveAdmin)

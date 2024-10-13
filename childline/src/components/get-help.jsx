@@ -7,10 +7,10 @@ const GetHelp=(props)=>{
             
             <ul style={{listStyleType:'none',backgroundColor:'#1b2f45f3'}} className="py-2 text-white text-start rounded-2">
             <h5>In this Page</h5>
-                <li>what is critical thinking?</li>
-                <li>what are the issues?</li>
-                <li>top tips</li>
-                <li>conversation starters</li>
+                {props.tags.map((tag, i) =>(
+                    <li key={i}>{tag.name}</li>
+                ))}
+                
             </ul>
         </div>
     )

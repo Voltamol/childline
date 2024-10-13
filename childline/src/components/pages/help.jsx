@@ -59,7 +59,7 @@ const HelpMain = (props) => {
                     ))}
                 </ul>
             </div>
-            <GetHelp />
+            <GetHelp tags={props.tags} />
         </HelpLayout>
     );
 };
@@ -70,9 +70,8 @@ const Help = (props) => {
     const [paragraphs, setParagraphs] = useState([]);
     const [further_info, setFurtherInfo] = useState([]);
     const [categoryitems, setCategoryItems] = useState([]);
-
+    const [tags, setTags] = useState([]);
     const lineCategoryName = Cookies.get('lineCategoryName'); 
-    console.log(`getting data for: ${lineCategoryName}`);
 
     useEffect(() => {
         const getCategoryItems = async () => {
@@ -80,14 +79,15 @@ const Help = (props) => {
                 const endpoint = `${endpoints.categoryitems}?line_category_name=${encodeURIComponent(lineCategoryName)}`;
                 const data = await fetchData(endpoint);
                 if (data) { // Ensure data is not null or undefined
-                    setCategoryItems(data);
+                    console.log(data);
                     const firstItem = data[0]; // Get the first item to display
+                    setCategoryItems(firstItem);
                     console.log(`firstItem: ${firstItem}`)
                     setBoldPoints(firstItem.bold_points || []);
                     setBulletedPoints(firstItem.bullets || []);
                     setParagraphs(firstItem.paragraphs || []);
                     setFurtherInfo(firstItem.further_info || []);
-                    
+                    setTags(firstItem.tags || []);
                 }
             }
         };
@@ -99,8 +99,8 @@ const Help = (props) => {
             <Navigation />
             <HeroSection img={hero_img}>
                 <h6 className='text-light'>Help and advice</h6>
-                <h2 data-aos="fade-up" className="aos-init aos-animate">Parental Controls</h2>
-                <p className='text-light'>In depth information and key advice on parental controls for parents and carers</p>
+                <h2 data-aos="fade-up" className="aos-init aos-animate">{categoryitems.name}</h2>
+                <p className='text-light'>{categoryitems.description}</p>
             </HeroSection>
 
             <HelpMain
@@ -108,6 +108,7 @@ const Help = (props) => {
                 bulleted_points={bulleted_points}
                 paragraphs={paragraphs}
                 further_info={further_info}
+                tags={tags}
             />
             <a href="#" className="scroll-top d-flex align-items-center justify-content-center active text-white"><BsArrowUp /></a>
         </>
