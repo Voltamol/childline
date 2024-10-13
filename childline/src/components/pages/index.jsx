@@ -14,7 +14,7 @@ const Index=(props)=>{
             <Navigation/>
             <HeroSection img={hero_img}>
                 <h2 data-aos="fade-up" className="aos-init aos-animate">Child Online Protection</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis cum recusandae eum laboriosam voluptatem repudiandae odio, vel exercitationem officiis provident minima. </p>
+                <p>Helping make the internet a great and safe place for children and young people</p>
 
                 <div className="d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
                     <PrimaryButton text="Get Started" href="categories" />
@@ -29,10 +29,10 @@ const Index=(props)=>{
                 
             </div>
             <div className="featured-services row p-2" id="categories">
-                <IconBox icon={<BsController className='featured-services-icon' />} title="Teachers and Professionals" />
-                <IconBox icon={<BsPhone className='featured-services-icon' />} title="Parents and Carers" />
-                <IconBox icon={<BsTv className='featured-services-icon' />} title="4-11 year olds" />
-                <IconBox icon={<BsChatDots className='featured-services-icon' />} title="11-18 year olds" />
+                <IconBox icon={{component:BsController,className:'featured-services-icon'}} title="Teachers and Professionals" />
+                <IconBox icon={{component:BsPhone,className:'featured-services-icon'}} title="Parents and Carers" />
+                <IconBox icon={{component:BsTv,className:'featured-services-icon'}} title="4-11 year olds" />
+                <IconBox icon={{component:BsChatDots,className:'featured-services-icon'}} title="11-18 year olds" />
             </div>
             <div>
                 <h2 data-aos="fade-up" className="aos-init aos-animate d-flex p-2">

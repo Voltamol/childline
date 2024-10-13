@@ -2,6 +2,7 @@ import {BsCaretRight} from 'react-icons/bs';
 import '../sources/Bizland/css/style.css'
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import React,{useState} from 'react';
 
 const HelpLink = (props) => {
     const handleClick = () => {
@@ -20,18 +21,22 @@ const HelpLink = (props) => {
 };
 
 const IconBox=(props)=>{
+    const title=props.title;
+    const [categories,setCategories]=useState([]);
+    const { component: IconComponent, className }=props.icon;
+
     return(
         <div className="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div className="icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                <div className="icon">{props.icon}</div>
-                <h4 className="title"><a href="">{props.title}</a></h4>
+                <div className="icon">{React.createElement(IconComponent, { className })}</div>
+                <h4 className="title"><a href="">{title}</a></h4>
                 <ul style={{listStyleType:'circle',width:'800px'}}>
                     
-                    <HelpLink to="/help" text="Social media"/>
-                    <HelpLink to="/help" text="Online Bullying"/>
-                    <HelpLink to="/help" text="Reliability Online"/>
-                    <HelpLink to="/help" text="Parental Controls"/>
-                    <HelpLink to="/help" text="Sexting"/>
+                    {/* <HelpLink to="/help" text="Social media"/> */}
+                    
+                    {categories.map((category, index) =>(
+                        <HelpLink to="/help" text={category.name} key={index}/>
+                    ))}
                     
                 </ul>
             </div>

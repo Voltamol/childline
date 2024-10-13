@@ -14,9 +14,17 @@ from .models import (
 )
 
 class LineCategorySerializer(serializers.ModelSerializer):
+
+    categories = serializers.SerializerMethodField()
+
     class Meta:
         model = LineCategory
         fields = '__all__'
+
+    def get_categories(self, obj):
+        # Use the CategoryItemSerializer to serialize category_items
+        items = obj.get_categories  # Call the property
+        return CategoryItemSerializer(items, many=True).data
 
 
 class ParagraphSectionSerializer(serializers.ModelSerializer):

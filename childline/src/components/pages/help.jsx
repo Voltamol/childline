@@ -27,7 +27,7 @@ const BoldPoints = (props) => {
         <>
             {props.points.map((point, i) => (
                 <p key={i}>
-                    <strong>{point[0]}</strong>: {point[1]}
+                    <strong>{point.title}</strong>: {point.body}
                 </p>
             ))}
         </>
@@ -40,7 +40,7 @@ const HelpMain = (props) => {
             <div className='pe-3 text-start ps-2'>
                 {props.paragraphs.map((para, index) => (
                     <div key={index}>
-                        <h2>{para.title || 'Paragraph'}</h2> {/* Adjust based on your data */}
+                        <h2>{para.title || ''}</h2> {/* Adjust based on your data */}
                         <p className='text-start pe-5 lead'>{para.body}</p>
                     </div>
                 ))}

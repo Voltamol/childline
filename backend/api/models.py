@@ -10,6 +10,11 @@ class LineCategory(models.Model):
     ]
     name = models.CharField(max_length=100,choices=lines)
     description = models.TextField(default='')
+
+    @property
+    def get_categories(self):
+        return self.items
+    
     class Meta:
         verbose_name = "Line Category"
         verbose_name_plural = "Line Categories"
