@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 class LineCategory(models.Model):
     lines=[
@@ -75,7 +76,7 @@ class Bullet(models.Model):
 
 class CardModel(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    content = models.TextField()
     cover_image = models.ImageField(upload_to='images/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -89,23 +90,17 @@ class CardModel(models.Model):
 class Resource(CardModel):
     ...
 
-
-
-class Subscriber(models.Model):
-    name=models.CharField(max_length=80,null=True, blank=True,default='')
-    password=models.CharField(max_length=150,null=True, blank=True,default='')
-    email=models.EmailField(max_length=200,default='')
+    
+class Subscriber(AbstractUser):
+    
     authorized_to_edit=models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name  
+        return self.username 
 
 class Thread(CardModel):
     author = models.ForeignKey(Subscriber, on_delete=models.CASCADE, related_name='threads')
-    title=models.CharField(max_length=255,default='')
-    cover_image=models.ImageField(upload_to="images/",default=None)
-    content=models.TextField(default='')
-
+    
 class SocialLink(models.Model):
     social_choices = [
         ('twitter', 'Twitter'),

@@ -11,7 +11,9 @@ from .views import (
     ResourceViewSet,
     SubscriberViewSet,
     ThreadViewSet,
-    SocialLinkViewSet
+    SocialLinkViewSet,
+    LoginView,
+    SignupView
 )
 
 # Create a router and register our viewsets with it.
@@ -30,5 +32,7 @@ router.register(r'sociallinks', SocialLinkViewSet)
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
+    path('signup/', SignupView.as_view(), name='signup'),
+    path('login/', LoginView.as_view(), name='login'),
     path('', include(router.urls)),
 ]

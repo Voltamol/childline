@@ -52,6 +52,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'api.Subscriber'
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Allow requests from your frontend
     "http://127.0.0.1:3000",  # You can also add this if needed

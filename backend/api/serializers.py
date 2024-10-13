@@ -13,6 +13,26 @@ from .models import (
     SocialLink,
 )
 
+class SubscriberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscriber
+        fields = ('username', 'email', 'password', 'authorized_to_edit')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = Subscriber(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            authorized_to_edit=validated_data['authorized_to_edit']
+        )
+        user.set_password(validated_data['password'])  # Hash the password
+        user.save()
+        return user
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
 class LineCategorySerializer(serializers.ModelSerializer):
 
     class Meta:

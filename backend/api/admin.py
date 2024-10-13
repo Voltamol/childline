@@ -28,11 +28,11 @@ class BulletAdmin(admin.ModelAdmin):
     search_fields = ('body',)
 
 class ResourceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'created_at', 'updated_at')
-    search_fields = ('title', 'description')
+    list_display = ('title', 'content', 'created_at', 'updated_at')
+    search_fields = ('title', 'content')
 
 class SubscriberAdmin(admin.ModelAdmin):
-    search_fields = ('name', 'email')
+    search_fields = ('username', 'email')
 
 class ThreadAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'created_at', 'updated_at')
@@ -56,7 +56,7 @@ admin.site.register(Subscriber, SubscriberAdmin)
 admin.site.register(Thread, ThreadAdmin)
 admin.site.register(SocialLink, SocialLinkAdmin)
 admin.site.register(Tag)
-
 admin.site.register(ParagraphSection, DescriptiveAdmin)
 admin.site.register(FurtherInfo, DescriptiveAdmin)
 admin.site.register(BoldPoint, DescriptiveAdmin)
+

@@ -26,6 +26,39 @@ from .serializers import (
     SocialLinkSerializer
 )
 
+# views.py
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from django.contrib.auth import authenticate, login
+from .models import Subscriber
+from .serializers import SubscriberSerializer, LoginSerializer
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+
+class SignupView(generics.CreateAPIView):
+    queryset = Subscriber.objects.all()
+    serializer_class = SubscriberSerializer
+    permission_classes = [AllowAny]
+
+    @method_decorator(csrf_exempt)  # Exempt this view from CSRF verification
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+class LoginView(generics.GenericAPIView):
+    serializer_class = LoginSerializer
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = authenticate(username=serializer.validated_data['username'], password=serializer.validated_data['password'])
+
+        if user is not None:
+            login(request, user)
+            return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
+        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
 # LineCategory ViewSet
 class LineCategoryViewSet(viewsets.ModelViewSet):
     queryset = LineCategory.objects.all()
@@ -94,7 +127,7 @@ class ResourceViewSet(viewsets.ModelViewSet):
     queryset = Resource.objects.all()
     serializer_class = ResourceSerializer
 
-# Subscriber ViewSet
+#Subscriber ViewSet
 class SubscriberViewSet(viewsets.ModelViewSet):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
