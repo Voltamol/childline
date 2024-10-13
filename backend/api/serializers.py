@@ -10,7 +10,7 @@ from .models import (
     Resource,
     Subscriber,
     Thread,
-    SocialLink
+    SocialLink,
 )
 
 class LineCategorySerializer(serializers.ModelSerializer):
@@ -60,12 +60,16 @@ class ResourceSerializer(serializers.ModelSerializer):
         model = Resource
         fields = '__all__'
 
+
+
 class SubscriberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subscriber
         fields = '__all__'
+        read_only_fields = ['authorized_to_edit']
 
 class ThreadSerializer(serializers.ModelSerializer):
+    author=SubscriberSerializer()
     class Meta:
         model = Thread
         fields = '__all__'

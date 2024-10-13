@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 class LineCategory(models.Model):
     lines=[
@@ -90,14 +89,22 @@ class CardModel(models.Model):
 class Resource(CardModel):
     ...
 
+
+
 class Subscriber(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name=models.CharField(max_length=80,null=True, blank=True,default='')
+    password=models.CharField(max_length=150,null=True, blank=True,default='')
+    email=models.EmailField(max_length=200,default='')
+    authorized_to_edit=models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.username  
+        return self.name  
 
 class Thread(CardModel):
     author = models.ForeignKey(Subscriber, on_delete=models.CASCADE, related_name='threads')
+    title=models.CharField(max_length=255,default='')
+    cover_image=models.ImageField(upload_to="images/",default=None)
+    content=models.TextField(default='')
 
 class SocialLink(models.Model):
     social_choices = [

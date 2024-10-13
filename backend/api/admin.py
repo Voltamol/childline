@@ -32,8 +32,7 @@ class ResourceAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description')
 
 class SubscriberAdmin(admin.ModelAdmin):
-    list_display = ('user', )
-    search_fields = ('user__username', 'user__email')
+    search_fields = ('name', 'email')
 
 class ThreadAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'created_at', 'updated_at')
