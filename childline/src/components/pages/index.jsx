@@ -30,7 +30,7 @@ const Index=(props)=>{
             </div>
             <div className="featured-services row p-2" id="categories">
                 <IconBox icon={{component:BsController,className:'featured-services-icon'}} title="Teachers and Professionals" />
-                <IconBox icon={{component:BsPhone,className:'featured-services-icon'}} title="Parents and Carers" />
+                <IconBox icon={{component:BsPhone,className:'featured-services-icon'}} title="Parents & carers" />
                 <IconBox icon={{component:BsTv,className:'featured-services-icon'}} title="4-11 year olds" />
                 <IconBox icon={{component:BsChatDots,className:'featured-services-icon'}} title="11-18 year olds" />
             </div>

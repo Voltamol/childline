@@ -53,6 +53,12 @@ class CategoryItemViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         name = self.request.query_params.get('line_category_name', None)
         queryset = super().get_queryset()  # Get the base queryset
+        # Filtering by service_line name
+        
+        service_line_name = self.request.query_params.get('service_line_name', None)
+        if service_line_name:
+            queryset = queryset.filter(service_line__name=service_line_name)
+
         if name:
             queryset = queryset.filter(name=name)  # Filter by CategoryItem's name
         return queryset
