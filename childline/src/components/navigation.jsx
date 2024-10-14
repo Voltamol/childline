@@ -68,20 +68,16 @@ const Navigation = (props) => {
                         <li><Link to="/resources">Resources</Link></li>
                         <li><Link to="/login">Contribute to our Blog</Link></li>
                         {dropdownTitles.map((title, index) => (
-                            <DropDownLink
-                                key={index}
-                                link={{
-                                    to: `/help/`, // Adjust the link as necessary
-                                    text: title,
-                                    dropdowns: fetchCategories(title))
-                                  
-                                  
-                                  
-                                    ))
-                                }}
-                                title={title}
-                            />
-                        ))}
+                        <DropDownLink
+                            key={index}
+                            link={{
+                                to: `/help/`, // Adjust the link as necessary
+                                text: title,
+                                dropdowns: fetchCategories(title) // Moved the comment for clarity
+                            }}
+                            title={title}
+                        />
+                    ))}
                     </ul>
                 </nav>
             </div>
