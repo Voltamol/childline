@@ -42,7 +42,7 @@ const LoginForm = (props) => {
     const setPassword= props.setPassword;
     return (
         <form onSubmit={props.onSubmit}>
-            <img className="mb-4 img-fluid" src={logo} alt="" />
+            <img className="mb-4 img-fluid" src={logo} alt="" style={{filter:"hue-rotate(120deg)"}} />
             {props.children[0]}
             {props.newHere ? <NamePassword newHere={true} setUsername={setUsername} setPassword={setPassword}>
                 <div className="form-floating">
@@ -53,7 +53,7 @@ const LoginForm = (props) => {
             <RememberMe />
             {props.children[1]}
             {props.children[2]}
-            <p className="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
+            <p className="mt-5 mb-3 text-body-secondary">&copy; 2024–2030</p>
         </form>
     );
 }

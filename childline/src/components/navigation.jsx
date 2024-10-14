@@ -5,17 +5,22 @@ import '../sources/Nova/css/main.css';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchData, endpoints } from '../api/endpoints';
+import Cookies from 'js-cookie';
 
 const DropDownLink = ({ link, title }) => {
+    const handleClick = (txt) => {
+        // Set the cookie with the line category name
+        Cookies.set('lineCategoryName', txt);
+    };
     return (
         <li className="dropdown">
             <Link to={link.to}>
                 <span>{title}</span> <i className="bi bi-chevron-down dropdown-indicator"></i>
             </Link>
             <ul>
-                <li><Link to={link.to}>{link.text}</Link></li>
+                {/* <li><Link to={link.to}>{link.text}</Link></li> */}
                 {link.dropdowns.map((sublink, i) => (
-                    <li key={i}><Link to="/help">{sublink.name}</Link></li>
+                    <li key={i}><Link to="/help" onClick={()=>{handleClick(sublink.name)}}>{sublink.name}</Link></li>
                 ))}
             </ul>
         </li>

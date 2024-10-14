@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { BasicToast } from './toast';
 
-const ImageAndTitle = ({ onDataSubmit }) => {
+const ImageAndTitle = ({ onDataSubmit,toastMessage }) => {
     const [title, setTitle] = useState('');
     const [image, setImage] = useState(null);
-    const [authorId, setAuthorId] = useState('');
     const [showToast, setShowToast] = useState(false);
 
     const handleTitleChange = (e) => {
@@ -15,12 +14,8 @@ const ImageAndTitle = ({ onDataSubmit }) => {
         setImage(e.target.files[0]);
     };
 
-    const handleAuthorIdChange = (e) => {
-        setAuthorId(e.target.value);
-    };
-
     const handleSubmit = () => {
-        onDataSubmit({ title, content: '', image, authorId });
+        onDataSubmit({ title, content: '', image});
         setShowToast(true);
     };
 
@@ -28,8 +23,8 @@ const ImageAndTitle = ({ onDataSubmit }) => {
         <>
             <p className='lead'>Specify a title</p>
             <input type="text" className="form-control" value={title} onChange={handleTitleChange} />
-            <p className='lead'>Specify Author ID</p>
-            <input type="text" className="form-control" value={authorId} onChange={handleAuthorIdChange} />
+            {/* <p className='lead'>Specify Author ID</p>
+            <input type="text" className="form-control" value={authorId} onChange={handleAuthorIdChange} /> */}
             <p className='lead'>Choose cover image</p>
             <div className="input-group mb-3">
                 <input type="file" className="form-control" accept=".jpg,.jpeg,.png" onChange={handleImageChange} />
@@ -39,7 +34,7 @@ const ImageAndTitle = ({ onDataSubmit }) => {
                 <button onClick={handleSubmit} className="btn btn-outline-dark">Post Thread</button>
             </div>
             <BasicToast show={showToast} closeCallback={() => { setShowToast(false); }}>
-                Successfully saved post...
+                {toastMessage}
             </BasicToast>
         </>
     );

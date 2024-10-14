@@ -8,12 +8,11 @@ import axios from 'axios';
 
 const ForumEditsPage = (props) => {
     const [editorContent, setEditorContent] = useState('');
-
-    const handleDataSubmit = async ({ title, image, authorId }) => {
+    const [toastMessage,setToastMessage] = useState('');
+    const handleDataSubmit = async ({ title, image}) => {
         const formData = new FormData();
         formData.append('title', title);
         formData.append('content', editorContent);
-        formData.append('author', authorId);
         formData.append('cover_image', image);
 
         try {
@@ -22,10 +21,10 @@ const ForumEditsPage = (props) => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log('Success:', response.data);
+            return setToastMessage("Success");
             // Handle successful post (e.g., show a toast, redirect, etc.)
         } catch (error) {
-            console.error('Error:', error);
+            return setToastMessage("error");
             // Handle errors
         }
     };
@@ -37,7 +36,7 @@ const ForumEditsPage = (props) => {
             <br />
             <Stack gap={2} className="p-5 mt-5">
                 <QuillEditor onChange={setEditorContent} />
-                <ImageAndTitle onDataSubmit={handleDataSubmit} />
+                <ImageAndTitle onDataSubmit={handleDataSubmit} toastMessage={toastMessage} />
             </Stack>
             <Footer />
         </>

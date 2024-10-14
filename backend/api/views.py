@@ -40,6 +40,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import FileResponse
+
+
 class SignupView(generics.CreateAPIView):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
@@ -60,6 +62,8 @@ class LoginView(generics.GenericAPIView):
 
         if user is not None:
             login(request, user)
+            # Store user ID in session
+            request.session['user_id'] = user.id
             return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -67,15 +71,6 @@ class LoginView(generics.GenericAPIView):
 class LineCategoryViewSet(viewsets.ModelViewSet):
     queryset = LineCategory.objects.all()
     serializer_class = LineCategorySerializer
-
-# CategoryItem ViewSet
-from rest_framework import viewsets
-from .models import CategoryItem
-from .serializers import CategoryItemSerializer
-
-from rest_framework import viewsets
-from .models import CategoryItem
-from .serializers import CategoryItemSerializer
 
 class CategoryItemViewSet(viewsets.ModelViewSet):
     serializer_class = CategoryItemSerializer
@@ -166,6 +161,14 @@ class SubscriberViewSet(viewsets.ModelViewSet):
 class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
+
+    def perform_create(self, serializer):
+        # Retrieve user ID from session
+        user_id = self.request.session.get('user_id')
+        if user_id:
+            serializer.save(author_id=user_id)  # Use the user ID from the session
+        else:
+            raise Exception("User must be logged in to create a thread.")
 
 # SocialLink ViewSet
 class SocialLinkViewSet(viewsets.ModelViewSet):
