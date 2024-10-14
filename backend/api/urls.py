@@ -9,6 +9,7 @@ from .views import (
     TagViewSet,
     BulletViewSet,
     ResourceViewSet,
+    ResourceDownloadView,
     SubscriberViewSet,
     ThreadViewSet,
     SocialLinkViewSet,
@@ -34,5 +35,6 @@ router.register(r'sociallinks', SocialLinkViewSet)
 urlpatterns = [
     path('signup/', SignupView.as_view(), name='signup'),
     path('login/', LoginView.as_view(), name='login'),
+    path('resources/<int:pk>/download/', ResourceDownloadView.as_view(), name='resource-download'),
     path('', include(router.urls)),
 ]

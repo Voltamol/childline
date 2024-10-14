@@ -1,0 +1,115 @@
+{
+    "signup": {
+        "url":"",
+        "method":"POST",
+        "sample_data":{
+            "username": "cade",
+            "email": "cade@example.com",
+            "password": "bakertilly",
+            "authorized_to_edit": false
+        }
+    },
+    "login": {
+        "url":"",
+        "method":"POST",
+        "sample_data":{
+            "username": "cade",
+            "password": "bakertilly"
+        }
+    },
+    "sociallinks": {
+        "url":"",
+        "method":"GET",
+        "sample_data":[
+            {
+                "id": 1,
+                "name": "twitter",
+                "url": "https://x.com/home"
+            },
+            {
+                "id": 2,
+                "name": "facebook",
+                "url": "https://www.facebook.com/"
+            },
+            {
+                "id": 3,
+                "name": "instagram",
+                "url": "https://www.instagram.com/"
+            },
+            {
+                "id": 4,
+                "name": "linkedin",
+                "url": "https://www.linkedin.com"
+            }
+        ]
+    },
+    "resources": {
+        "url":"",
+        "method":"GET",
+        "sample_data":[
+            {
+                "id": 3,
+                "title": "Group Chats",
+                "content": "A collection of activities to use with children aged 9-13, to explore safe and responsible use of group chats",
+                "cover_image": "http://localhost:8000/media/images/IMG-20241009-WA0006.jpg",
+                "created_at": "2024-10-14T09:19:42.258388Z",
+                "updated_at": "2024-10-14T09:19:42.258388Z",
+                "document": "http://localhost:8000/media/resources/Car_Wash_Schema.pdf"
+            }
+        ]
+    },
+    "resource_download":{
+        "url":"http://localhost:8000/resources/3/download/",
+        "method":"GET"
+    },
+    "threads":{
+        "url":"",
+        "method":"GET",
+        "sample_data":[
+            {
+                "id": 1,
+                "author": {
+                    "id": 2,
+                    "password": "bakertilly",
+                    "last_login": null,
+                    "is_superuser": false,
+                    "username": "cade",
+                    "first_name": "",
+                    "last_name": "",
+                    "email": "cade@example.com",
+                    "is_staff": false,
+                    "is_active": true,
+                    "date_joined": "2024-10-14T08:50:17.010784Z",
+                    "authorized_to_edit": false,
+                    "groups": [],
+                    "user_permissions": []
+                },
+                "title": "Looking at the ‘Goodbye Meta AI’ hoax",
+                "content": "An Instagram story has been shared by more than 600,000 people online. The post in question shows a picture that encourages people to reshare it claiming that, Meta would no longer be able to use their information for the development of Meta AI if they do.\r\n\r\nMeta have taken action on stories which have shared this hoax, with these messages now having a label saying “false information” before you can view them.\r\n\r\nWhat data is being used\r\n\r\nAs Meta is developing their new AI experience they are looking to use user data to improve their service.\r\n\r\nMeta say this data will only be gathered from public information on accounts over people aged 18 and over, this data includes public posts, and the comments users have made on posts.\r\n\r\nHow to opt out of Meta AI\r\n\r\nAlthough sharing an image on an Instagram story is not a way of opting out of your data being used, it is possible to ‘object’ to this within the Instagram app.",
+                "cover_image": "http://localhost:8000/media/images/IMG-20241009-WA0004.jpg",
+                "created_at": "2024-10-14T09:59:45.340041Z",
+                "updated_at": "2024-10-14T09:59:45.340041Z"
+            }
+        ]
+    },
+    "subscribers":{
+        "url":"http://localhost:8000/subscribers/by-email/?email=subscriber_email",
+        "method":"GET",
+        "sample_data":{
+            "id": 1,
+            "password": "pbkdf2_sha256$870000$Af1jlbshKZ52OaKtxSnbnc$EOQdE6R9K5bSg8eCDt4a8wH7ylAVJjA33LCvDi1U4Ig=",
+            "last_login": "2024-10-14T09:09:08.753056Z",
+            "is_superuser": true,
+            "username": "lord",
+            "first_name": "",
+            "last_name": "",
+            "email": "lord@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2024-10-13T20:13:57.137660Z",
+            "authorized_to_edit": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+}

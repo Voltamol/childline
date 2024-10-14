@@ -26,7 +26,6 @@ from .serializers import (
     SocialLinkSerializer
 )
 
-# views.py
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
@@ -35,7 +34,12 @@ from .models import Subscriber
 from .serializers import SubscriberSerializer, LoginSerializer
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import action
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from django.http import FileResponse
 class SignupView(generics.CreateAPIView):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
@@ -127,10 +131,36 @@ class ResourceViewSet(viewsets.ModelViewSet):
     queryset = Resource.objects.all()
     serializer_class = ResourceSerializer
 
+class ResourceDownloadView(APIView):
+    def get(self, request, pk):
+        try:
+            resource = Resource.objects.get(pk=pk)
+            file_path = resource.document.path  # Get the file path
+            response = FileResponse(open(file_path, 'rb'), as_attachment=True)
+            response['Content-Disposition'] = f'attachment; filename="{resource.document.name}"'
+            return response
+        except Resource.DoesNotExist:
+            return Response({"detail": "Resource not found."}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 #Subscriber ViewSet
 class SubscriberViewSet(viewsets.ModelViewSet):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
+
+    @action(detail=False, methods=['get'], url_path='by-email')
+    def get_subscriber_by_email(self, request):
+        email = request.query_params.get('email', None)
+        if email is not None:
+            try:
+                subscriber = Subscriber.objects.get(email=email)
+                serializer = self.get_serializer(subscriber)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            except Subscriber.DoesNotExist:
+                return Response({"detail": "Subscriber not found."}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            return Response({"detail": "Email parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
 
 # Thread ViewSet
 class ThreadViewSet(viewsets.ModelViewSet):

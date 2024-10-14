@@ -89,7 +89,7 @@ class SubscriberSerializer(serializers.ModelSerializer):
         read_only_fields = ['authorized_to_edit']
 
 class ThreadSerializer(serializers.ModelSerializer):
-    author=SubscriberSerializer()
+    author = serializers.PrimaryKeyRelatedField(queryset=Subscriber.objects.all())
     class Meta:
         model = Thread
         fields = '__all__'

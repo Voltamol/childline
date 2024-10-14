@@ -88,6 +88,7 @@ class CardModel(models.Model):
         return self.title
 
 class Resource(CardModel):
+    document=models.FileField(upload_to='resources/',default=None)
     ...
 
     
