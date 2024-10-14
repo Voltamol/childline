@@ -4,30 +4,30 @@ import ImageAndTitle from "../image-upload";
 import Stack from "react-bootstrap/esm/Stack";
 import Navigation from "../navigation";
 import { useState } from "react";
+import axios from 'axios';
 
 const ForumEditsPage = (props) => {
     const [editorContent, setEditorContent] = useState('');
 
-    const handleDataSubmit = ({ title, image }) => {
+    const handleDataSubmit = async ({ title, image, authorId }) => {
         const formData = new FormData();
         formData.append('title', title);
-        formData.append('image', image);
         formData.append('content', editorContent);
+        formData.append('author', authorId);
+        formData.append('cover_image', image);
 
-        // Post the data to your API
-        fetch('/api/your-endpoint', {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
+        try {
+            const response = await axios.post('http://localhost:8000/threads/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            console.log('Success:', response.data);
             // Handle successful post (e.g., show a toast, redirect, etc.)
-        })
-        .catch((error) => {
+        } catch (error) {
             console.error('Error:', error);
             // Handle errors
-        });
+        }
     };
 
     return (

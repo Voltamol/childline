@@ -15,7 +15,7 @@ const DropDownLink = ({ link, title }) => {
             <ul>
                 <li><Link to={link.to}>{link.text}</Link></li>
                 {link.dropdowns.map((sublink, i) => (
-                    <li key={i}><Link to={sublink.to}>{sublink.text}</Link></li>
+                    <li key={i}><Link to="/help">{sublink.name}</Link></li>
                 ))}
             </ul>
         </li>
@@ -24,25 +24,35 @@ const DropDownLink = ({ link, title }) => {
 
 const Navigation = (props) => {
     const [isSticky, setIsSticky] = useState(false);
+    const [categoryitems,setCategoryItems] = useState({})
 
     const dropdownTitles = [
-        "Teachers & Professionals",
-        "Parents & Carers",
-        "4–11 Year Olds",
-        "11–18 Year Olds"
+        "Teachers & professionals",
+        "Parents & carers",
+        "4–11 year olds",
+        "11–18 year olds"
     ];
-    const fetchCategories = async (title) => {
-      const endpoint = `${endpoints.categoryitems}?service_line_name=${encodeURIComponent(title)}`;
-      const data = await fetchData(endpoint); // Adjust the endpoint as necessary
-      return data;
-    };
 
+            const fetchCategories = async (title) => {
+                const endpoint = `${endpoints.categoryitems}?service_line_name=${encodeURIComponent(title)}`;
+                const data = await fetchData(endpoint); // Adjust the endpoint as necessary
+                setCategoryItems(prevItems => ({
+                ...prevItems,
+                [title]: data  // Example of adding a new category
+            }
+        ));
+    };
+    const fetchAllCategories = async () => {
+        for (const title of dropdownTitles) {
+            await fetchCategories(title);
+        }
+    };
     useEffect(() => {
         const handleScroll = () => {
             setIsSticky(window.scrollY > 100);
         };
 
-        fetchCategories();
+        fetchAllCategories();
         window.addEventListener('scroll', handleScroll);
 
         // Cleanup the event listener on component unmount
@@ -50,7 +60,7 @@ const Navigation = (props) => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
+    console.log(categoryitems)
     return (
         <header id="header" className={`header ${isSticky ? 'sticked' : ''} d-flex align-items-center fixed-top`}>
             <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -73,7 +83,7 @@ const Navigation = (props) => {
                             link={{
                                 to: `/help/`, // Adjust the link as necessary
                                 text: title,
-                                dropdowns: fetchCategories(title) // Moved the comment for clarity
+                                dropdowns: categoryitems[title]||[] // Moved the comment for clarity
                             }}
                             title={title}
                         />
