@@ -1,28 +1,21 @@
-import blog2 from '../sources/Nova/img/blog/blog-2.jpg';
+// h-card.jsx
+import React from 'react';
 
-{/* <div className='my-2 px-2'>
-    <HCard/>
-    <HCard/>
-    <HCard/>
-    <HCard/>
-</div> */}
-
-const HCard=(props)=>{
-    return(
+const HCard = ({ title, content, coverImage, documentUrl }) => {
+    return (
         <div className='row mb-1'>
             <div className='col-lg-2 col-md-2'>
-                <img src={blog2} class="img-fluid h-100"  alt=""/>
+                <img src={coverImage} className="img-fluid h-100 rounded-1" alt={title} />
             </div>
             <div className='col-lg-10 col-md-10'>
-                <h5 className='d-flex'>Teaching About Healthy Online Relationships</h5>
-                <p className='lead text-start' >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Placeat consequatur quam eius, dolorem, iure, omnis maxime dolore provident nostrum repellat ipsam sed eum in beatae numquam esse maiores.
-                    Distinctio, voluptates!
+                <h5 className='d-flex'>{title}</h5>
+                <p className='lead text-start'>
+                    {content}
                 </p>
+                <a href={documentUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline-dark mt-2">Download Document</a>
             </div>
         </div>
-    )
+    );
 }
 
 export default HCard;
