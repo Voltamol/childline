@@ -5,16 +5,18 @@ import Stack from "react-bootstrap/esm/Stack";
 import Navigation from "../navigation";
 import { useState } from "react";
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const ForumEditsPage = (props) => {
     const [editorContent, setEditorContent] = useState('');
     const [toastMessage,setToastMessage] = useState('');
+    const author_id = Cookies.get('author_id'); 
     const handleDataSubmit = async ({ title, image}) => {
         const formData = new FormData();
         formData.append('title', title);
         formData.append('content', editorContent);
         formData.append('cover_image', image);
-
+        formData.append('author', author_id);
         try {
             const response = await axios.post('http://localhost:8000/threads/', formData, {
                 headers: {

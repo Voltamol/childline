@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth import authenticate
 from .models import (
     LineCategory,
     CategoryItem,
@@ -32,6 +33,13 @@ class SubscriberSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
+
+    def validate(self, attrs):
+        user = authenticate(username=attrs['username'], password=attrs['password'])
+        if not user:
+            raise serializers.ValidationError('Invalid credentials')
+        attrs['user'] = user
+        return attrs
 
 class LineCategorySerializer(serializers.ModelSerializer):
 

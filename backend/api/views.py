@@ -54,24 +54,13 @@ class SignupView(generics.CreateAPIView):
 class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
     permission_classes = [AllowAny]
-
-    @method_decorator(csrf_exempt)  # Exempt this view from CSRF verification
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
-
-    @csrf_exempt
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = authenticate(username=serializer.validated_data['username'], password=serializer.validated_data['password'])
-
-        if user is not None:
-            login(request, user)
-            # Store user ID in session
-            request.session['user_id'] = user.id
-            return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
-        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
-
+        user = serializer.validated_data['user']
+        # Optionally, generate a token or return user details
+        return Response({'message': 'Login successful', 'user': user.id}, status=status.HTTP_200_OK)
+    
 # LineCategory ViewSet
 class LineCategoryViewSet(viewsets.ModelViewSet):
     queryset = LineCategory.objects.all()
@@ -167,22 +156,6 @@ class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
 
-    @method_decorator(csrf_exempt)  # Exempt this view from CSRF verification
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
-
-    @csrf_exempt
-    def create(self, request, *args, **kwargs):
-        print("Incoming data:", request.data)  # Log the incoming request data
-        print("Session data:", request.session.get('user_id'))  # Log session data
-        return super().create(request, *args, **kwargs)
-
-    def perform_create(self, serializer):
-        user_id = self.request.session.get('user_id')
-        if user_id:
-            serializer.save(author=user_id)
-        else:
-            raise Exception("User must be logged in to create a thread.")
 
 # SocialLink ViewSet
 class SocialLinkViewSet(viewsets.ModelViewSet):

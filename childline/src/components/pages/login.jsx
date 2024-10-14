@@ -3,6 +3,7 @@ import '../../sign-in.css';
 import logo from '../../childline-logo.png';
 import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Make sure to install axios
+import Cookies from 'js-cookie';
 
 const FormTitle = (props) => {
     return <h1 className="h3 mb-3 fw-normal text-center">{props.title}</h1>
@@ -72,7 +73,8 @@ const Login = (props) => {
 
         try {
             const response = await axios.post('http://localhost:8000/login/', loginData); // Adjust the URL as needed
-            alert('Login successful:');
+            alert(response.data.message);
+            Cookies.set('author_id', response.data.user);
             navigate('/blog-edits');
             // Handle successful login here (e.g., redirect, store tokens, etc.)
         } catch (error) {
