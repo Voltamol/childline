@@ -21,10 +21,10 @@ const ForumEditsPage = (props) => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            return setToastMessage("Success");
+            return setToastMessage("Successfully saved post");
             // Handle successful post (e.g., show a toast, redirect, etc.)
         } catch (error) {
-            return setToastMessage("error");
+            return setToastMessage(error.toString());
             // Handle errors
         }
     };

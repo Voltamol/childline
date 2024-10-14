@@ -35,7 +35,7 @@ from .serializers import SubscriberSerializer, LoginSerializer
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import action
-
+from rest_framework.exceptions import ValidationError
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -55,6 +55,11 @@ class LoginView(generics.GenericAPIView):
     serializer_class = LoginSerializer
     permission_classes = [AllowAny]
 
+    @method_decorator(csrf_exempt)  # Exempt this view from CSRF verification
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    @csrf_exempt
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -162,11 +167,20 @@ class ThreadViewSet(viewsets.ModelViewSet):
     queryset = Thread.objects.all()
     serializer_class = ThreadSerializer
 
+    @method_decorator(csrf_exempt)  # Exempt this view from CSRF verification
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    @csrf_exempt
+    def create(self, request, *args, **kwargs):
+        print("Incoming data:", request.data)  # Log the incoming request data
+        print("Session data:", request.session.get('user_id'))  # Log session data
+        return super().create(request, *args, **kwargs)
+
     def perform_create(self, serializer):
-        # Retrieve user ID from session
         user_id = self.request.session.get('user_id')
         if user_id:
-            serializer.save(author_id=user_id)  # Use the user ID from the session
+            serializer.save(author=user_id)
         else:
             raise Exception("User must be logged in to create a thread.")
 
