@@ -3,6 +3,7 @@ import React, { useState,useEffect } from 'react';
 import ReactQuill from 'react-quill'; // Import ReactQuill
 import 'react-quill/dist/quill.snow.css'; // Import the styles
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap styles
+import '../custom scrollbar.css'; //
 import {BasicToast} from './toast';
 const QuillEditor = ({ onChange }) => {
     const [editorHtml, setEditorHtml] = useState('');
@@ -67,8 +68,9 @@ const ReadOnlyQuill=(props)=>{
                 readOnly={true} // Set to true for read-only view
                 modules={{
                     toolbar: false // Disable toolbar for read-only
+
                 }}
-                style={{ height: '100%',width:'100%' }} 
+                style={{ height: '100%',width:'100%'}} 
         />
     )
 }

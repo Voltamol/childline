@@ -33,14 +33,15 @@ const ForumEditsPage = (props) => {
 
     return (
         <>
-            <Navigation />
+            {/* <Navigation />
             <div className="position-fixed top-0 container-fluid bg-dark" style={{ height: '105px' }}></div>
-            <br />
+            <br /> */}
             <Stack gap={2} className="p-5 mt-5">
-                <QuillEditor onChange={setEditorContent} />
                 <ImageAndTitle onDataSubmit={handleDataSubmit} toastMessage={toastMessage} />
+
+                <QuillEditor onChange={setEditorContent} />
             </Stack>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 };
