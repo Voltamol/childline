@@ -7,7 +7,7 @@ const SinglePost = ({ title, category, date, children }) => {
         <div className="single-post">
             <div className="post-meta">
                 <span className="date">{category}</span>
-                <span className="mx-1">&bullet;</span>
+                {/* <span className="mx-1">&bullet;</span> */}
                 <span>{date}</span>
             </div>
             <h1 className="mb-5">{title}</h1>
@@ -18,7 +18,7 @@ const SinglePost = ({ title, category, date, children }) => {
 
 const PostContainer = ({ title, category, img, children }) => {
     return (
-        <div className="col-md-9 post-content" data-aos="fade-up">
+        <div className="col-12 post-content" data-aos="fade-up">
             <SinglePost title={title} category={category}>
                 {children}
             </SinglePost>

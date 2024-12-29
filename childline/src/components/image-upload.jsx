@@ -21,6 +21,12 @@ const ImageAndTitle = ({ onDataSubmit,toastMessage }) => {
 
     return (
         <>
+            <div className='d-flex justify-content-end fixed-top z-3 py-2 pe-2 bg-white'>
+                <button onClick={handleSubmit} className="btn btn-outline-dark">Post Thread</button>
+                <span className="mx-2"></span>
+                <button  className="btn btn-outline-secondary">Save As Draft</button>
+
+            </div>
             <p className='lead'>Specify a title</p>
             <input type="text" className="form-control" value={title} onChange={handleTitleChange} />
             {/* <p className='lead'>Specify Author ID</p>
@@ -30,9 +36,8 @@ const ImageAndTitle = ({ onDataSubmit,toastMessage }) => {
                 <input type="file" className="form-control" accept=".jpg,.jpeg,.png" onChange={handleImageChange} />
                 <label className="input-group-text">Upload</label>
             </div>
-            <div className='d-flex justify-content-end'>
-                <button onClick={handleSubmit} className="btn btn-outline-dark">Post Thread</button>
-            </div>
+            
+
             <BasicToast show={showToast} closeCallback={() => { setShowToast(false); }}>
                 {toastMessage}
             </BasicToast>
