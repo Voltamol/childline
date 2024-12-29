@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/childline/static/css/main.71b559b6.css",
+    "main.js": "/childline/static/js/main.459ce60e.js",
+    "static/js/453.c25fedbb.chunk.js": "/childline/static/js/453.c25fedbb.chunk.js",
+    "static/media/cta-bg.jpg": "/childline/static/media/cta-bg.314069eaf3191d75946a.jpg",
+    "static/media/testimonials-bg.jpg": "/childline/static/media/testimonials-bg.b5a6189eb5ae7a6d81aa.jpg",
+    "static/media/hero-bg2.jpg": "/childline/static/media/hero-bg2.08c64708b2d21731da41.jpg",
+    "static/media/hero-bg.jpg": "/childline/static/media/hero-bg.4da28cf2c695f2228fd9.jpg",
+    "static/media/childline-logo.png": "/childline/static/media/childline-logo.a002b3beb669e37a1704.png",
+    "static/media/contact-bg.png": "/childline/static/media/contact-bg.e58ef2a98ee0c27a1d3e.png",
+    "index.html": "/childline/index.html",
+    "main.71b559b6.css.map": "/childline/static/css/main.71b559b6.css.map",
+    "main.459ce60e.js.map": "/childline/static/js/main.459ce60e.js.map",
+    "453.c25fedbb.chunk.js.map": "/childline/static/js/453.c25fedbb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.71b559b6.css",
+    "static/js/main.459ce60e.js"
+  ]
+}
