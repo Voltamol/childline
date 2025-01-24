@@ -16,14 +16,14 @@ function App() {
     <div className="App">
         <Router>
             <Routes>
-                {/* <Route path="/" element={<Index/>}/> */}
-                {/* <Route path="/help" element={<Help/>}/>
-                <Route path="/resources" element={<ResourcesPage/>}/> */}
+                <Route path="/" element={<Index/>}/> 
+                <Route path="/help" element={<Help/>}/>
+                <Route path="/resources" element={<ResourcesPage/>}/> 
                 <Route path="/blog-details" element={<ForumDetailsPage/>}/>
                 <Route path="/" element={<ForumEditsPage/>}/>
-                {/* <Route path='/login' element={<Login/>}/>
+               <Route path='/login' element={<Login/>}/>
                 <Route path='/signup' element={<signup/>}/>
-                <Route path='/posts' element={<Posts/>}/> */}
+                <Route path='/posts' element={<Posts/>}/> 
             </Routes>
         </Router>
     </div>
